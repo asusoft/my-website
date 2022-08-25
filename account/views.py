@@ -6,7 +6,7 @@ from .models import *
 def home(request):
     persona = Resume.objects.all()
 
-    return render(request, 'account/account.html', {'persona': persona})
+    return render(request, 'account/index.html', {'persona': persona})
 
 def editCv(request):
     return render(request, 'account/editCv.html')
