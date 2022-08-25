@@ -26,6 +26,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     topic = models.ManyToManyField(Topic)
+    picture = models.ImageField(upload_to='pics', default='me.jpg')
 
     class Meta:
         ordering = ['title']

@@ -12,7 +12,8 @@ def editCv(request):
     return render(request, 'account/editCv.html')
 
 def projects(request):
-    return render(request, 'account/projects.html')
+    projects = Project.objects.all()
+    return render(request, 'account/projects.html', {'projects': projects})
 
 def addProject(request):
     return render(request, 'account/addProject.html')
