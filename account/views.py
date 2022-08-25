@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'account/account.html')
+    persona = Resume.objects.all()
+
+    return render(request, 'account/account.html', {'persona': persona})
 
 def editCv(request):
     return render(request, 'account/editCv.html')
