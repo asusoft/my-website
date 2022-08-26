@@ -33,6 +33,7 @@ def viewResearch(request):
     return render(request, 'account/viewResearch.html')
 
 def publications(request):
-    return render(request, 'account/publications.html')
+    publications = Publication.objects.all()
+    return render(request, 'account/publications.html', {'publications': publications})
 
 
