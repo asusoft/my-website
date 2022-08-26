@@ -6,7 +6,9 @@ from .models import *
 def home(request):
     persona = Resume.objects.first
     projects = Project.objects.all()
-    return render(request, 'account/index.html', {'persona': persona, 'projects': projects})
+    publications = Publication.objects.all()
+    articles = Article.objects.all()
+    return render(request, 'account/index.html', {'persona': persona, 'projects': projects, 'articles': articles, 'publications': publications})
 
 def editCv(request):
     return render(request, 'account/editCv.html')

@@ -64,7 +64,7 @@ class Article(models.Model):
     picture = models.ImageField(upload_to='pics', default='me.jpg')
     posted = models.DateField(("Date"), default=datetime.date.today)
     reference = models.ManyToManyField(Reference)
-    publication = models.ManyToManyField(Publication)
+    publication = models.ManyToManyField(Publication, blank=True)
 
 
     class Meta:

@@ -70,7 +70,7 @@ https://templatemo.com/tm-578-first-portfolio
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_5">Blog</a>
+                            <a class="nav-link click-scroll" href="#section_5">Articles</a>
                         </li>
 
                         <li class="nav-item">
@@ -176,13 +176,13 @@ https://templatemo.com/tm-578-first-portfolio
                             <div class="about-thumb">
                                 <div class="row">
                                     <div class="col-lg-6 col-6 featured-border-bottom py-2">
-                                        <strong class="featured-numbers">2+</strong>
+                                        <strong class="featured-numbers">{{articles.count}}+</strong>
 
-                                        <p class="featured-text">Years of Experiences</p>
+                                        <p class="featured-text">Articles</p>
                                     </div>
 
                                     <div class="col-lg-6 col-6 featured-border-start featured-border-bottom ps-5 py-2">
-                                        <strong class="featured-numbers">{{projects.count}}</strong>
+                                        <strong class="featured-numbers">{{publications.count}}</strong>
 
                                         <p class="featured-text">Publications</p>
                                     </div>
@@ -198,6 +198,7 @@ https://templatemo.com/tm-578-first-portfolio
 
                                         <p class="featured-text">Awards Received</p>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -249,65 +250,128 @@ https://templatemo.com/tm-578-first-portfolio
                         </div>
 
                         <div class="clearfix"></div>
-                        {% for project in projects %}
+                        {% for publication in publications %}
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="projects-thumb">
                                 <div class="projects-info">
-                                    <h5 class="mb-0">{{project.title}}</h5>
+                                    <h5 class="mb-0">{{publication.title}}</h5>
                                     <strong class="site-footer-title d-block mb-3"></strong>
                                     <div class="footer-menu flex-column">
-                                        {% for topic in project.topic.all %}
+                                        {% for topic in publication.topic.all %}
                                         <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
                                         {% endfor %}
                                     </div> 
                                     <a href="{{project.picture.url}}" class="btn btn-info" role="button" aria-pressed="true">Abstract</a>
-                                    <a href="#" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    <a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>                               
-                                </div>
-                                                         
+                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                    {%if publication.repo %}
+                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                    {%endif%} 
+                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
+                                </div>                  
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="projects-thumb">
                                 <div class="projects-info">
-                                    <h5 class="mb-0">{{project.title}}</h5>
+                                    <h5 class="mb-0">{{publication.title}}</h5>
                                     <strong class="site-footer-title d-block mb-3"></strong>
                                     <div class="footer-menu flex-column">
-                                        {% for topic in project.topic.all %}
+                                        {% for topic in publication.topic.all %}
                                         <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
                                         {% endfor %}
                                     </div> 
                                     <a href="{{project.picture.url}}" class="btn btn-info" role="button" aria-pressed="true">Abstract</a>
-                                    <a href="#" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    <a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>                               
-                                </div>
-                                                         
+                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                    {%if publication.repo %}
+                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                    {%endif%}     
+                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                             
+                                </div>                  
                             </div>
                         </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="projects-thumb">
+                                <div class="projects-info">
+                                    <h5 class="mb-0">{{publication.title}}</h5>
+                                    <strong class="site-footer-title d-block mb-3"></strong>
+                                    <div class="footer-menu flex-column">
+                                        {% for topic in publication.topic.all %}
+                                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
+                                        {% endfor %}
+                                    </div> 
+                                    <a href="{{project.picture.url}}" class="btn btn-info" role="button" aria-pressed="true">Abstract</a>
+                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                    {% if publication.repo%}
+                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>     
+                                    {%endif%}  
+                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                        
+                                </div>                  
+                            </div>
+                        </div>                        
                         {% endfor %}
+                        <p class="mb-4"><a a href="./publications" class="custom-btn btn custom-link" >View all Publications</a></p>
                     </div>
                 </div>
             </section>
-              <!-- BLOG -->
+              <!-- ARTICLES -->
             <section class="contact section-padding" id="section_5">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-12">
                             <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
                                 <img src="{% static 'images/aerial-view-man-using-computer-laptop-wooden-table.jpg' %}" class="avatar-image img-fluid" alt="">
-                                <h2 class="text-white ms-4 mb-0">Blog Posts</h2>
+                                <h2 class="text-white ms-4 mb-0">Articles</h2>
                             </div>
                         </div>
 
                         <div class="clearfix"></div>
-                            {%for project in projects %}
+                            {%for article in articles %}
                             <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;">
                                 <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{project.title}}</strong>
-                                    <p class="mb-0">{{project.description|safe|truncatewords:"20"|linebreaks}}</p>
+                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
+                                    <p class="mb-0">{{article.catchy}}</p>
 
                                     <ul class="footer-menu">
-                                        {% for topic in project.topic.all %}
+                                        {% for topic in article.topic.all %}
+                                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;">
+                                <div class="contact-info contact-info-border-start d-flex flex-column">
+                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
+                                    <p class="mb-0">{{article.catchy}}</p>
+
+                                    <ul class="footer-menu">
+                                        {% for topic in article.topic.all %}
+                                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;">
+                                <div class="contact-info contact-info-border-start d-flex flex-column">
+                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
+                                    <p class="mb-0">{{article.catchy}}</p>
+
+                                    <ul class="footer-menu">
+                                        {% for topic in article.topic.all %}
+                                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;">
+                                <div class="contact-info contact-info-border-start d-flex flex-column">
+                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
+                                    <p class="mb-0">{{article.catchy}}</p>
+
+                                    <ul class="footer-menu">
+                                        {% for topic in article.topic.all %}
                                         <li class="footer-menu-item"><a href="#" class="footer-menu-link">{{topic.name}}</a></li>
                                         {% endfor %}
                                     </ul>
