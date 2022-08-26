@@ -37,3 +37,19 @@ def publications(request):
     return render(request, 'account/publications.html', {'publications': publications})
 
 
+def topic(request, topic_id):
+
+    try:
+        topic = Topic.objects.get(id = topic_id)
+    except Project.DoesNotExist:
+        return render(request, 'account/404.html')
+
+    articles = Article.objects.all()
+
+    my_articles = []
+    for article in articles:
+        article_topics = article.topic.all()
+        if topic in article_topics:
+            my_articles.append(article)
+
+    return render(request, 'account/topic.html', {'topic': topic, 'articles': my_articles})

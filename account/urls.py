@@ -11,4 +11,5 @@ urlpatterns = [
     path('researches', views.researches, name='researches'),
     path('viewResearch', views.viewResearch, name='viewReserach'),
     path('publications', views.publications, name='publications'),
+    path('topic/<int:topic_id>', views.topic, name='topic'),
 ]
