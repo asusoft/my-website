@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 
 # Create your views here.
@@ -15,18 +15,22 @@ def projects(request):
     projects = Project.objects.all()
     return render(request, 'account/projects.html', {'projects': projects})
 
-def addProject(request):
-    return render(request, 'account/addProject.html')
+def viewProject(request, project_id):
+
+    try:
+        project = Project.objects.get(id = project_id)
+    except Project.DoesNotExist:
+        return render(request, 'account/404.html')
+
+    return render(request, 'account/viewProject.html', {'project': project})
 
 def researches(request):
     return render(request, 'account/researches.html')
 
-def addResearch(request):
-    return render(request, 'account/addResearch.html')
+def viewResearch(request):
+    return render(request, 'account/viewResearch.html')
 
 def publications(request):
     return render(request, 'account/publications.html')
 
-def addPublication(request):
-    return render(request, 'account/addPublication.html')
 
