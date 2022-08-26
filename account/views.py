@@ -4,9 +4,9 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    persona = Resume.objects.all()
-
-    return render(request, 'account/index.html', {'persona': persona})
+    persona = Resume.objects.first
+    projects = Project.objects.all()
+    return render(request, 'account/index.html', {'persona': persona, 'projects': projects})
 
 def editCv(request):
     return render(request, 'account/editCv.html')
