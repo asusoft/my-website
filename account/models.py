@@ -1,6 +1,7 @@
 from turtle import title
 from django.db import models
 from django.core.validators import URLValidator
+import datetime
 
 # Create your models here.
 
@@ -30,6 +31,23 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['title']
+    
+    def __str__(self):
+        return self.title
+
+
+class Publication(models.Model):
+    title = models.CharField(max_length=100)
+    abstract = models.TextField()
+    topic = models.ManyToManyField(Topic)
+    picture = models.ImageField(upload_to='pics', default='me.jpg')
+    paper = models.TextField(validators=[URLValidator()])
+    repo = models.TextField(validators=[URLValidator()], blank=True, default='#')
+    posted = models.DateField(("Date"), default=datetime.date.today)
+
+
+    class Meta:
+        ordering = ['posted']
     
     def __str__(self):
         return self.title
