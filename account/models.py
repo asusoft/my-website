@@ -51,3 +51,24 @@ class Publication(models.Model):
     
     def __str__(self):
         return self.title
+
+class Reference(models.Model):
+    title = models.CharField(max_length=100)
+    link = models.TextField(validators=[URLValidator()])
+
+class Article(models.Model):
+    title = models.CharField(max_length=100)
+    text = models.TextField()
+    catchy = models.TextField()
+    topic = models.ManyToManyField(Topic)
+    picture = models.ImageField(upload_to='pics', default='me.jpg')
+    posted = models.DateField(("Date"), default=datetime.date.today)
+    reference = models.ManyToManyField(Reference)
+    publication = models.ManyToManyField(Publication)
+
+
+    class Meta:
+        ordering = ['posted']
+    
+    def __str__(self):
+        return self.title
