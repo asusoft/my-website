@@ -1,6 +1,6 @@
 from turtle import title
 from django.db import models
-from django.core.validators import URLValidator
+from django.core.validators import *
 import datetime
 
 # Create your models here.
@@ -18,6 +18,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=30)
     color = models.CharField(max_length=30, blank=True)
     short = models.CharField(max_length=30, blank=True)
+    logo = models.FileField(upload_to="pics", default='me.jpg', validators=[FileExtensionValidator(['svg'])])
 
     class Meta:
         ordering = ['name']
