@@ -8,7 +8,8 @@ def home(request):
     projects = Project.objects.all()
     publications = Publication.objects.all()
     articles = Article.objects.all()
-    return render(request, 'account/index.html', {'persona': persona, 'projects': projects, 'articles': articles, 'publications': publications})
+    topics = Topic.objects.all()
+    return render(request, 'account/index.html', {'persona': persona, 'projects': projects, 'articles': articles, 'publications': publications, 'topics': topics})
 
 def editCv(request):
     return render(request, 'account/editCv.html')
