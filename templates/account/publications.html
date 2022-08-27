@@ -9,7 +9,7 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="#">My Publications</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -54,8 +54,8 @@
                       <h5 class="card-title">{{publication.title}}</h5>
                       <div>
                         {% for topic in publication.topic.all %}
-                        <a href="#" class="badge badge-pill badge-success">{{topic.name}}</a>
-                        <a href="#" class="badge badge-pill badge-success">{{topic.name}}</a>
+                        <a href="#" class="badge badge-pill badge-{{topic.color}}">{{topic.name}}</a>
+                        <a href="#" class="badge badge-pill badge-{{topic.color}}">{{topic.name}}</a>
                         {% endfor %}
                       </div>
                         <p> </p>
@@ -147,7 +147,8 @@
                       
                   </div>
                 </div>
-            </div>           
+            </div>  
+                     
             {%endfor%}
         </div>
     </div>

@@ -52,4 +52,20 @@ def topic(request, topic_id):
         if topic in article_topics:
             my_articles.append(article)
 
-    return render(request, 'account/topic.html', {'topic': topic, 'articles': my_articles})
+    projects = Project.objects.all()
+
+    my_projects = []
+    for project in projects:
+        project_topics = project.topic.all()
+        if topic in project_topics:
+            my_projects.append(project)
+
+    publications = Publication.objects.all()
+
+    my_publications = []
+    for publication in publications:
+        publication_topics = publication.topic.all()
+        if topic in publication_topics:
+            my_publications.append(publication)
+
+    return render(request, 'account/topic.html', {'topic': topic, 'articles': my_articles, 'projects': my_projects, 'publications': my_publications})

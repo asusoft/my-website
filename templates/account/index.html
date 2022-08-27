@@ -39,7 +39,6 @@ https://templatemo.com/tm-578-first-portfolio
     </head>
     
     <body>
-
         <section class="preloader">
             <div class="spinner">
                 <span class="spinner-rotate"></span>    
@@ -53,7 +52,7 @@ https://templatemo.com/tm-578-first-portfolio
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a href="index.html" class="navbar-brand mx-auto mx-lg-0">ASUSOFT</a>
+                <a href="" class="navbar-brand mx-auto mx-lg-0">ASUSOFT</a>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-lg-5">
@@ -236,30 +235,6 @@ https://templatemo.com/tm-578-first-portfolio
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h5 class="mb-0">{{project.title}}</h5>
-                                    </div>
-                                    <p>{{project.description}}</p>
-                                    <a href="viewProject/{{project.id}}" class="custom-btn custom-border-btn btn mt-3" id="{{project.id}}">Read More</a>
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-lightbulb" ></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h5 class="mb-0">{{project.title}}</h5>
-                                    </div>
-                                    <p>{{project.description}}</p>
-                                    <a href="viewProject/{{project.id}}" class="custom-btn custom-border-btn btn mt-3" id="{{project.id}}">Read More</a>
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-lightbulb" ></i>
-                                    </div>
-                                </div>
-                            </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -276,7 +251,6 @@ https://templatemo.com/tm-578-first-portfolio
                                 <h2 class="text-white ms-4 mb-0">Publications</h2>
                             </div>
                         </div>
-
                         <div class="clearfix"></div>
                         {% for publication in publications %}
                         <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
@@ -289,7 +263,7 @@ https://templatemo.com/tm-578-first-portfolio
                                         <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
                                         {% endfor %}
                                     </div> 
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#exampleModalCenter">
                                         Abstract
                                     </button>
                                      <!-- Modal -->
@@ -298,7 +272,7 @@ https://templatemo.com/tm-578-first-portfolio
                                             <div class="modal-content">
                                                 <div class="modal-header d-block">
                                                     <div class="d-flex">
-                                                        <h6 class="modal-title" id="exampleModalLongTitle">{{publication.title}}</h6>
+                                                        <h6 class="modal-title mb-3" id="exampleModalLongTitle">{{publication.title}}</h6>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                              <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -316,239 +290,14 @@ https://templatemo.com/tm-578-first-portfolio
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                    <a href="{{publication.paper}}" class="btn btn-outline-success mb-3" role="button" aria-pressed="true">Paper</a>
                                     {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary mb-3" role="button" aria-pressed="true">Repo</a>      
                                     {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
+                                    <a href="{{publication.repo}}" class="btn btn-outline-warning mb-3" role="button" aria-pressed="true">Articles</a>                  
                                 </div>                  
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                    <h6 class="mb-0">{{publication.title}}</h6>
-                                    <strong class="site-footer-title d-block mb-3"></strong>
-                                    <div class="footer-menu flex-column">
-                                        {% for topic in publication.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </div> 
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Abstract
-                                    </button>
-                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header d-block">
-                                                    <div class="d-flex">
-                                                        <h6 class="modal-title" id="exampleModalLongTitle">{{publication.title}}</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <p><b><i>Abstract</i></b></p>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p>
-                                                      {{publication.abstract}}
-                                                  </p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                    {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
-                                </div>                  
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                    <h6 class="mb-0">{{publication.title}}</h6>
-                                    <strong class="site-footer-title d-block mb-3"></strong>
-                                    <div class="footer-menu flex-column">
-                                        {% for topic in publication.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </div> 
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Abstract
-                                    </button>
-                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header d-block">
-                                                    <div class="d-flex">
-                                                        <h6 class="modal-title" id="exampleModalLongTitle">{{publication.title}}</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <p><b><i>Abstract</i></b></p>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p>
-                                                      {{publication.abstract}}
-                                                  </p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                    {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
-                                </div>                  
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                    <h6 class="mb-0">{{publication.title}}</h6>
-                                    <strong class="site-footer-title d-block mb-3"></strong>
-                                    <div class="footer-menu flex-column">
-                                        {% for topic in publication.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </div> 
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Abstract
-                                    </button>
-                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header d-block">
-                                                    <div class="d-flex">
-                                                        <h6 class="modal-title" id="exampleModalLongTitle">{{publication.title}}</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <p><b><i>Abstract</i></b></p>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p>
-                                                      {{publication.abstract}}
-                                                  </p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                    {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
-                                </div>                  
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                    <h6 class="mb-0">{{publication.title}}</h6>
-                                    <strong class="site-footer-title d-block mb-3"></strong>
-                                    <div class="footer-menu flex-column">
-                                        {% for topic in publication.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </div> 
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Abstract
-                                    </button>
-                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header d-block">
-                                                    <div class="d-flex">
-                                                        <h6 class="modal-title" id="exampleModalLongTitle">{{publication.title}}</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <p><b><i>Abstract</i></b></p>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p>
-                                                      {{publication.abstract}}
-                                                  </p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                    {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
-                                </div>                  
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
-                            <div class="projects-thumb">
-                                <div class="projects-info">
-                                    <h6 class="mb-0">{{publication.title}}</h6>
-                                    <strong class="site-footer-title d-block mb-3"></strong>
-                                    <div class="footer-menu flex-column">
-                                        {% for topic in publication.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </div> 
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Abstract
-                                    </button>
-                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header d-block">
-                                                    <div class="d-flex">
-                                                        <h6 class="modal-title" id="exampleModalLongTitle">{{publication.title}}</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <p><b><i>Abstract</i></b></p>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p>
-                                                      {{publication.abstract}}
-                                                  </p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                    {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>                  
-                                </div>                  
-                            </div>
-                        </div>            
+                        </div>         
                         {% endfor %}
                         <p class="mb-4"><a a href="./publications" class="custom-btn btn custom-link" >View all Publications</a></p>
                     </div>
@@ -567,108 +316,20 @@ https://templatemo.com/tm-578-first-portfolio
 
                         <div class="clearfix"></div>
                             {%for article in articles %}
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
+                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0" style="margin-top: 10px;">
                                 <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
+                                    <strong class="site-footer-title d-block mb-0">{{article.title}}</strong >
+                                        <p> </p>
+                                    <i><strong class="mb-5">Posted on: {{article.posted}}</strong></i>
+                                    <p> </p>
+                                    <p class="mb-3">{{article.catchy}}</p>
 
                                     <ul class="footer-menu">
                                         {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
+                                        <a href="topic/{{topic.id}}" class="badge badge-{{topic.color}} mb-4" id="{{topic.id}}">{{topic.name}}</a>
+                                        {%endfor%}
                                     </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-12 pe-lg-0 margin-bottom: 10px;" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
-                                    <strong class="site-footer-title d-block mb-3">{{article.title}}</strong>
-                                    <p class="mb-0">{{article.catchy}}</p>
-
-                                    <ul class="footer-menu">
-                                        {% for topic in article.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <p class="mb-4"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
+                                    <p class="mb-0" style="margin-top: 5px;"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
                                 </div>
                             </div>
                             {% endfor%}

@@ -16,6 +16,8 @@ class Resume(models.Model):
 
 class Topic(models.Model):
     name = models.CharField(max_length=30)
+    color = models.CharField(max_length=30, blank=True)
+    short = models.CharField(max_length=30, blank=True)
 
     class Meta:
         ordering = ['name']
@@ -24,7 +26,7 @@ class Topic(models.Model):
         return self.name
 
 class Project(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     description = models.TextField()
     topic = models.ManyToManyField(Topic)
     picture = models.ImageField(upload_to='pics', default='me.jpg')
@@ -37,7 +39,7 @@ class Project(models.Model):
 
 
 class Publication(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     abstract = models.TextField()
     topic = models.ManyToManyField(Topic)
     picture = models.ImageField(upload_to='pics', default='me.jpg')
@@ -57,7 +59,7 @@ class Reference(models.Model):
     link = models.TextField(validators=[URLValidator()])
 
 class Article(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     text = models.TextField()
     catchy = models.TextField()
     topic = models.ManyToManyField(Topic)
