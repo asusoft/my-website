@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="TemplateMo">
 
-        <title>Asusoft Portfolio</title>
+        <title>{{topic.name}}</title>
         <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
 
@@ -302,40 +302,42 @@
                                 </h5>
                                 {%endif%}
                             {% for publication in publications%}            
-                            <!-- Modal -->                    
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header d-block">
-                                            <div class="d-flex mb-3">
-                                                <strong>{{publication.title}}</strong>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                    
-                                                </button>
+                                <!-- Modal -->                    
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header d-block">
+                                                <div class="d-flex mb-3">
+                                                    <strong>{{publication.title}}</strong>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        
+                                                    </button>
+                                                </div>
+                                                <p class="mb-0"><b><i>Abstract</i></b></p>
                                             </div>
-                                            <p class="mb-0"><b><i>Abstract</i></b></p>
-                                        </div>
-                                        <div class="modal-body">
-                                        <p>
-                                            {{publication.abstract}}
-                                        </p>
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <div class="modal-body">
+                                            <p>
+                                                {{publication.abstract}}
+                                            </p>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">
-                                
+                                <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">       
                                     <div class="card-body" style="background-color: #3b3327;">
                                         <i class="far fa-file-alt"></i>
                                         <h5 class="card-title text-light">
                                             <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
                                         <div>
                                             {% for public_topic in publication.topic.all %}
-                                            <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                            <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
+                                            {% if topic != public_topic %}
+                                            <p>Other topics
+                                            <a href="#" class="badge badge-pill badge-{{public_topic.color}}">{{public_topic.name}}</a>
+                                            </p>
+                                            {%endif%}
                                             {% endfor %}
                                         </div>
                                             <p> </p>
@@ -350,83 +352,143 @@
                                             <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
                                         </div>
                                     </div>
-                            </div> 
-                            <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">
-                                
-                                <div class="card-body" style="background-color: #3b3327;">
-                                    <i class="far fa-file-alt"></i>
-                                    <h5 class="card-title text-light">
-                                        <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
-                                    <div>
-                                        {% for public_topic in publication.topic.all %}
-                                        <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                        <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                        {% endfor %}
+                                </div>
+                                <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">       
+                                    <div class="card-body" style="background-color: #3b3327;">
+                                        <i class="far fa-file-alt"></i>
+                                        <h5 class="card-title text-light">
+                                            <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
+                                        <div>
+                                            {% for public_topic in publication.topic.all %}
+                                            {% if topic != public_topic %}
+                                            <p>Other topics
+                                            <a href="#" class="badge badge-pill badge-{{public_topic.color}}">{{public_topic.name}}</a>
+                                            </p>
+                                            {%endif%}
+                                            {% endfor %}
+                                        </div>
+                                            <p> </p>
+                                        <div>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Abstract
+                                            </button>
+                                            <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                                {%if publication.repo %}
+                                            <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                                {%endif%} 
+                                            <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                        </div>
                                     </div>
-                                        <p> </p>
-                                    <div>
-                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            Abstract
-                                        </button>
-                                        <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                            {%if publication.repo %}
-                                        <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                            {%endif%} 
-                                        <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                </div>
+                                <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">       
+                                    <div class="card-body" style="background-color: #3b3327;">
+                                        <i class="far fa-file-alt"></i>
+                                        <h5 class="card-title text-light">
+                                            <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
+                                        <div>
+                                            {% for public_topic in publication.topic.all %}
+                                            {% if topic != public_topic %}
+                                            <p>Other topics
+                                            <a href="#" class="badge badge-pill badge-{{public_topic.color}}">{{public_topic.name}}</a>
+                                            </p>
+                                            {%endif%}
+                                            {% endfor %}
+                                        </div>
+                                            <p> </p>
+                                        <div>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Abstract
+                                            </button>
+                                            <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                                {%if publication.repo %}
+                                            <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                                {%endif%} 
+                                            <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                        </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">
-                                
-                            <div class="card-body" style="background-color: #3b3327;">
-                                <i class="far fa-file-alt"></i>
-                                <h5 class="card-title text-light">
-                                    <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
-                                <div>
-                                    {% for public_topic in publication.topic.all %}
-                                    <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                    <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                    {% endfor %}
+                                <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">       
+                                    <div class="card-body" style="background-color: #3b3327;">
+                                        <i class="far fa-file-alt"></i>
+                                        <h5 class="card-title text-light">
+                                            <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
+                                        <div>
+                                            {% for public_topic in publication.topic.all %}
+                                            {% if topic != public_topic %}
+                                            <p>Other topics
+                                            <a href="#" class="badge badge-pill badge-{{public_topic.color}}">{{public_topic.name}}</a>
+                                            </p>
+                                            {%endif%}
+                                            {% endfor %}
+                                        </div>
+                                            <p> </p>
+                                        <div>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Abstract
+                                            </button>
+                                            <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                                {%if publication.repo %}
+                                            <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                                {%endif%} 
+                                            <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                    <p> </p>
-                                <div>
-                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Abstract
-                                    </button>
-                                    <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                        {%if publication.repo %}
-                                    <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                        {%endif%} 
-                                    <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">       
+                                    <div class="card-body" style="background-color: #3b3327;">
+                                        <i class="far fa-file-alt"></i>
+                                        <h5 class="card-title text-light">
+                                            <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
+                                        <div>
+                                            {% for public_topic in publication.topic.all %}
+                                            {% if topic != public_topic %}
+                                            <p>Other topics
+                                            <a href="#" class="badge badge-pill badge-{{public_topic.color}}">{{public_topic.name}}</a>
+                                            </p>
+                                            {%endif%}
+                                            {% endfor %}
+                                        </div>
+                                            <p> </p>
+                                        <div>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Abstract
+                                            </button>
+                                            <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                                {%if publication.repo %}
+                                            <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                                {%endif%} 
+                                            <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                    </div>
-                    <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">
-                                
-                        <div class="card-body" style="background-color: #3b3327;">
-                            <i class="far fa-file-alt"></i>
-                            <h5 class="card-title text-light">
-                                <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
-                            <div>
-                                {% for public_topic in publication.topic.all %}
-                                <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                <a href="#" class="badge badge-pill badge-{{topic.color}}">{{public_topic.name}}</a>
-                                {% endfor %}
-                            </div>
-                                <p> </p>
-                            <div>
-                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Abstract
-                                </button>
-                                <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
-                                    {%if publication.repo %}
-                                <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
-                                    {%endif%} 
-                                <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
-                            </div>
-                        </div>
-                </div>
-                              {%endfor%}
+                                <div class="pub-list-item" style="background-color: #3b3327; margin-top: 15px; padding-right: 80px;">       
+                                    <div class="card-body" style="background-color: #3b3327;">
+                                        <i class="far fa-file-alt"></i>
+                                        <h5 class="card-title text-light">
+                                            <i class="fas fa-band-aid"></i>{{publication.title}}, {{publication.title}}, {{publication.title}}</h5>
+                                        <div>
+                                            {% for public_topic in publication.topic.all %}
+                                            {% if topic != public_topic %}
+                                            <p>Other topics
+                                            <a href="#" class="badge badge-pill badge-{{public_topic.color}}">{{public_topic.name}}</a>
+                                            </p>
+                                            {%endif%}
+                                            {% endfor %}
+                                        </div>
+                                            <p> </p>
+                                        <div>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Abstract
+                                            </button>
+                                            <a href="{{publication.paper}}" class="btn btn-outline-success" role="button" aria-pressed="true">Paper</a>
+                                                {%if publication.repo %}
+                                            <a href="{{publication.repo}}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Repo</a>      
+                                                {%endif%} 
+                                            <a href="{{publication.repo}}" class="btn btn-outline-warning" role="button" aria-pressed="true">Articles</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%endfor%}
                         </div>
                     </div>
                 </div>
