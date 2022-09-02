@@ -9,6 +9,8 @@
         <meta name="author" content="TemplateMo">
 
         <title>Asusoft Portfolio</title>
+        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
 
         <!-- CSS FILES -->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -219,23 +221,7 @@ https://templatemo.com/tm-578-first-portfolio
                         </div>
                         {% for topic in topics%}
                         <div class="col-lg-2 col-4 ms-auto clients-item-height">
-                            <a href="topic/{{topic.id}}"><img src="{% static 'images/clients/AI-PNG-HD.svg' %}" class="clients-image img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="col-lg-2 col-4 clients-item-height">
-                            <a href="topic/{{topic.id}}"><img src="{% static 'images/clients/Machine-learning-logo-1.svg' %}" class="clients-image img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="col-lg-2 col-4 clients-item-height">
-                            <a href="topic/{{topic.id}}"><img src="{% static 'images/clients/tokico.svg' %}" class="clients-image img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="col-lg-2 col-4 clients-item-height">
-                            <a href="topic/{{topic.id}}"><img src="{% static 'images/clients/shopify.svg' %}" class="clients-image img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="col-lg-2 col-4 me-auto clients-item-height">
-                            <a href="topic/{{topic.id}}"><img src="{% static 'images/clients/profil-rejser.svg' %}" class="clients-image img-fluid" alt=""></a>
+                            <a href="topic/{{topic.id}}"><img src="{{topic.logo.url}}" class="clients-image img-fluid" alt=""></a>
                         </div>
                         {%endfor%}
                     </div>
@@ -253,21 +239,29 @@ https://templatemo.com/tm-578-first-portfolio
                             <h2 class="text-white ms-4 mb-0">Projects</h2>
                         </div>
 
-                        <div class="row pt-lg-5">
-                            {% for project in projects %}
-                            <div class="col-lg-6 col-12">
-                                <div class="services-thumb">
-                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
-                                        <h5 class="mb-0">{{project.title}}</h5>
-                                    </div>
-                                    <p>{{project.description}}</p>
-                                    <a href="viewProject/{{project.id}}" class="custom-btn custom-border-btn btn mt-3" id="{{project.id}}">Read More</a>
-                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
-                                        <i class="services-icon bi-lightbulb" ></i>
+                        <div class="container py-2">
+                            <div class="row" data-masonry='{"percentPosition": true }'>
+                                {% for project in projects %}
+                                <div class="col-lg-6 col-12">
+                                    <div class="contact-info services-thumb">
+                                        <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                            <h5 class="mb-0">{{project.title}}</h5>
+                                        </div>
+                                        <p>{{project.description}}</p>
+                                        <a href="viewProject/{{project.id}}" class="custom-btn custom-border-btn btn mt-3" id="{{project.id}}">Read More</a>                                        
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="contact-info services-thumb">
+                                        <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                            <h5 class="mb-0">{{project.title}}</h5>
+                                        </div>
+                                        <p>{{project.description}} It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                        <a href="viewProject/{{project.id}}" class="custom-btn custom-border-btn btn" id="{{project.id}}">Read More</a>                                        
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -286,13 +280,13 @@ https://templatemo.com/tm-578-first-portfolio
                         <div class="clearfix"></div>
                         {% for publication in publications %}
                         <div class="col-lg-4 col-md-6 col-12" style="margin-top: 10px;">
-                            <div class="projects-thumb">
+                            <div class="footer-menu flex-column">
+                            <div class="projects-thumb" style="padding: 20px;">
                                 <div class="projects-info">
                                     <h6 class="mb-0">{{publication.title}}</h6>
                                     <strong class="site-footer-title d-block mb-3"></strong>
-                                    <div class="footer-menu flex-column">
                                         {% for topic in publication.topic.all %}
-                                        <li class="footer-menu-item"><a href="topic/{{topic.id}}" class="footer-menu-link" id="{{topic.id}}">{{topic.name}}</a></li>
+                                        <a href="topic/{{topic.id}}" class="badge badge-{{topic.color}} mb-4" id="{{topic.id}}">{{topic.short}}</a>
                                         {% endfor %}
                                     </div> 
                                     <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#exampleModalCenter">
@@ -349,7 +343,7 @@ https://templatemo.com/tm-578-first-portfolio
                         <div class="clearfix"></div>
                             {%for article in articles %}
                             <div class="col-lg-3 col-md-6 col-12 pe-lg-0" style="margin-top: 10px;">
-                                <div class="contact-info contact-info-border-start d-flex flex-column">
+                                <div class="contact-info contact-info-border-start d-flex flex-column" style="padding-top: 20px;">
                                     <strong class="site-footer-title d-block mb-0">{{article.title}}</strong >
                                         <p> </p>
                                     <i><strong class="mb-5">Posted on: {{article.posted}}</strong></i>
@@ -358,7 +352,7 @@ https://templatemo.com/tm-578-first-portfolio
 
                                     <ul class="footer-menu">
                                         {% for topic in article.topic.all %}
-                                        <a href="topic/{{topic.id}}" class="badge badge-{{topic.color}} mb-4" id="{{topic.id}}">{{topic.name}}</a>
+                                        <a href="topic/{{topic.id}}" class="badge badge-{{topic.color}} mb-4" id="{{topic.id}}">{{topic.short}}</a>
                                         {%endfor%}
                                     </ul>
                                     <p class="mb-0" style="margin-top: 5px;"><a a href="#" class="custom-btn btn custom-link" >Read More</a></p>
